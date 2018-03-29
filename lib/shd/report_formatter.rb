@@ -16,22 +16,22 @@ module SHD
       strings = []
 
       if report[:columns][:added].any?
-        strings << "Columns added: #{format_columns(report[:columns][:added])}"
+        strings << ":heavy_plus_sign: Columns added: #{format_columns(report[:columns][:added])}"
       end
 
       if report[:columns][:removed].any?
-        strings << "Columns removed: #{format_columns(report[:columns][:removed])}"
+        strings << ":heavy_minus_sign: Columns removed: #{format_columns(report[:columns][:removed])}"
       end
 
       if report[:stations][:added].any?
-        strings << "#### Stations added"
+        strings << "#### :heavy_plus_sign: Stations added"
         report[:stations][:added].each do |station|
           strings += format_station(station)
         end
       end
 
       if report[:stations][:removed].any?
-        strings << "#### Stations removed"
+        strings << "#### :heavy_minus_sign: Stations removed"
 
         report[:stations][:removed].each do |station|
           strings << "— **#{station['id']} – #{station['name']}**"
@@ -78,9 +78,9 @@ module SHD
         next if (key == "id") || (key == "_name")
 
         if value[:before].nil? || value[:before].empty?
-          strings << "    - `#{key}` was added, value is `#{value[:after]}`"
+          strings << "    - :heavy_plus_sign: `#{key}` was added, value is `#{value[:after]}`"
         elsif value[:after].nil? || value[:after].empty?
-          strings << "    - `#{key}` was removed, value was `#{value[:before]}`"
+          strings << "    - :heavy_minus_sign: `#{key}` was removed, value was `#{value[:before]}`"
         elsif key.end_with?("_is_enabled")
           strings << "    - `#{key}` is now #{bool_to_word(value[:after])}"
         else
