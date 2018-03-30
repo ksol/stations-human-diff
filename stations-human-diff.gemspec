@@ -6,7 +6,7 @@ require "shd/version"
 Gem::Specification.new do |spec|
   spec.name          = "stations-human-diff"
   spec.version       = SHD::VERSION
-  spec.authors       = ["Kevin Sołtysiak"]
+  spec.authors       = ["Kevin Soltysiak"]
   spec.email         = ["kevin.soltysiak@trainline.com"]
 
   spec.summary       = "Pretty print stations.csv diffs"
